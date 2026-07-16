@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-playfair), "Georgia", serif;
+  --font-sans: var(--font-be-vietnam), "Arial", sans-serif;
+
+  /* Botanical palette */
+  --color-cream: #f2ecdc;
+  --color-paper: #f8f4e8;
+  --color-sand: #e7dfca;
+  --color-pine: #0d211a;
+  --color-moss: #1b352a;
+  --color-fern: #2c4a3a;
+  --color-leaf: #5f8f6b;
+  --color-sage: #a7c4a0;
+  --color-mist: #cfd8c6;
+  --color-gold: #c9a24b;
+  --color-ink: #16291f;
+  --color-bark: #51604f;
+  --color-clay: #b4643c;
+
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-spin-slow: spin-slow 22s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-pine);
+  font-feature-settings: "ss01" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-pine);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-pine);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-fern);
+  border-radius: 8px;
+  border: 2px solid var(--color-pine);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-leaf);
+}
+
+/* film grain overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 9s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-3%, -5%); }
+  30% { transform: translate(4%, 2%); }
+  50% { transform: translate(-4%, 6%); }
+  70% { transform: translate(6%, -2%); }
+  90% { transform: translate(-2%, 4%); }
+}
+
+/* elegant underline sweep for links */
+.link-sweep {
+  position: relative;
+}
+.link-sweep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.link-sweep:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* field underline grow */
+.field-line {
+  position: relative;
+}
+.field-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--color-leaf), var(--color-gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.field-line:focus-within::after {
+  transform: scaleX(1);
+}
+
+/* disable number input arrows */
+input[type="tel"]::-webkit-outer-spin-button,
+input[type="tel"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
