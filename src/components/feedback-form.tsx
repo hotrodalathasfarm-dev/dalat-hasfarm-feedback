@@ -245,8 +245,8 @@ export default function FeedbackForm() {
             </h3>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
               Cảm ơn bạn đã dành thời gian chia sẻ. Nội dung đã được chuyển
-              trực tiếp đến <strong className="text-text">Quản lý Tuyển dụng</strong> và sẽ được xem
-              xét, phản hồi sớm nhất trong vòng 48 giờ làm việc.
+              trực tiếp đến <strong className="text-text">Phòng Nhân sự </strong> và sẽ được xem
+              xét, xử lý sớm nhất.
             </p>
 
             <button
