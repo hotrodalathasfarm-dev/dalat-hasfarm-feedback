@@ -56,7 +56,7 @@ export default function Footer() {
                   href="mailto:tuyendung@dalathasfarm.com"
                   className="link-sweep inline-block"
                 >
-                  tuyendung.dalathasfarm@gmail.com
+                  tuyendung@dalathasfarm.com
                 </a>
                 <span className="mt-0.5 block text-[10.5px] text-muted">
                   Phòng Tuyển dụng
