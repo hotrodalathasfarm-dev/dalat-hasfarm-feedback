@@ -50,21 +50,10 @@ export default function Footer() {
             <h4 className="text-[10.5px] font-semibold uppercase tracking-[0.24em] text-primary">
               Liên hệ trực tiếp
             </h4>
-            <ul className="mt-4 space-y-2.5 text-[13px] text-text">
+            <ul className="mt-4 space-y-2.5 text-[13px] text-text">              
               <li>
                 <a
-                  href="mailto:anvuong@dalathasfarm.com"
-                  className="link-sweep inline-block"
-                >
-                  anvuong@dalathasfarm.com
-                </a>
-                <span className="mt-0.5 block text-[10.5px] text-muted">
-                  Quản lý Tuyển dụng
-                </span>
-              </li>
-              <li>
-                <a
-                  href="mailto:tuyendung.dalathasfarm@gmail.com"
+                  href="mailto:tuyendung@dalathasfarm.com"
                   className="link-sweep inline-block"
                 >
                   tuyendung.dalathasfarm@gmail.com
@@ -86,15 +75,14 @@ export default function Footer() {
               </li>
               <li className="flex gap-2.5">
                 <PhoneCall className="mt-0.5 size-4 shrink-0 text-primary" />
-                Mọi ý kiến đều được đọc và phản hồi trực tiếp nếu bạn để lại
-                liên hệ.
+                Mọi ý kiến đều ghi nhận và lắng nghe trực tiếp.
               </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-border">
           <div className="mx-auto flex max-w-[1500px] flex-col items-center justify-between gap-2 px-5 py-5 text-[10.5px] uppercase tracking-[0.18em] text-muted sm:flex-row sm:px-8 lg:px-12">
-            <span>© 2026 Dalat Hasfarm — Phòng Nhân sự & Tuyển dụng</span>
+            <span>© 2026 Dalat Hasfarm — Phòng Nhân sự</span>
           </div>
         </div>
       </footer>
