@@ -1,18 +1,22 @@
-import { Flower2 } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
   return (
     <header className="relative z-40 mx-auto flex max-w-[1500px] items-center justify-between px-5 py-5 sm:px-8 lg:px-12">
       <a href="/" className="flex items-center gap-3">
-        <span className="grid size-10 place-items-center rounded-full bg-primary text-white">
-          <Flower2 className="size-5" />
-        </span>
+        <Image
+          src="/Logo-Dalat-Hasfarm.png"
+          alt="Dalat Hasfarm"
+          width={180}
+          height={48}
+          className="h-11 w-auto"
+        />
         <span className="leading-none">
           <span className="block text-[16px] font-semibold tracking-tight text-text">
             Dalat Hasfarm
           </span>
           <span className="mt-1 block text-[9px] font-semibold uppercase tracking-[0.28em] text-muted">
-            Tuyển dụng · Nhân sự
+            Phòng Nhân sự
           </span>
         </span>
       </a>
