@@ -44,16 +44,16 @@ function CircleBadge() {
           style={{ textTransform: "uppercase", fontWeight: 600 }}
         >
           <textPath href="#badge-circle">
-            Lắng nghe · Thấu hiểu · Hành động ·
+            Lắng nghe · Thấu hiểu · Đồng hành · Cải thiện ·
           </textPath>
         </text>
       </svg>
-      <span className="grid size-16 place-items-center rounded-full bg-white shadow-lg ring-2 ring-primary/15">
+      <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-xl ring-2 ring-primary/15">
         <Image
           src="/Logo-Dalat-Hasfarm.png"
           alt="Dalat Hasfarm"
-          width={54}
-          height={54}
+          width={170}
+          height={44}
           className="h-12 w-auto"
         />
       </span>
@@ -162,7 +162,7 @@ export default function Hero() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={IMG_WIDE}
-              alt="Thung lũng nhà kính hoa tại Đà Lạt"
+              alt="Nhà kính hiện đại của Dalat Hasfarm"
               className="h-44 w-full object-cover sm:h-56"
               loading="lazy"
             />
@@ -183,14 +183,14 @@ export default function Hero() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={IMG_MAIN}
-                  alt="Người làm vườn chăm sóc hoa tại nhà kính Dalat Hasfarm"
+                  alt="Niềm vui lan tỏa cùng nhau"
                   className="h-[380px] w-full object-cover transition-transform duration-[1.6s] ease-out hover:scale-[1.06]"
                   loading="lazy"
                 />
               </div>
               <span className="absolute inset-x-0 bottom-0 h-28 rounded-b-3xl bg-gradient-to-t from-black/55 to-transparent" />
               <span className="absolute bottom-5 left-6 right-6 text-[10px] uppercase tracking-[0.24em] text-white/90">
-                Vườn hoa Đà Lạt — nơi mỗi ngày bắt đầu
+                Dalat Hasfarm — nơi mỗi ngày bắt đầu bằng niềm vui
               </span>
             </motion.div>
 
