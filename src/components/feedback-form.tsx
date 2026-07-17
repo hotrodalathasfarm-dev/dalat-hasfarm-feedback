@@ -36,7 +36,7 @@ import {
 type Status = "idle" | "submitting" | "success";
 
 const inputCls =
-  "w-full bg-transparent py-3 text-[15px] text-ink placeholder:text-bark/40 focus:outline-none";
+  "w-full bg-transparent px-4 py-3 text-[15px] text-text placeholder:text-muted/50 focus:outline-none";
 
 function Label({
   htmlFor,
@@ -50,17 +50,17 @@ function Label({
   required?: boolean;
 }) {
   return (
-    <div className="flex items-center justify-between mb-1">
+    <div className="mb-2 flex items-center justify-between">
       <label
         htmlFor={htmlFor}
-        className="flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-bark"
+        className="flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-muted"
       >
-        <Icon className="size-3.5 text-leaf" strokeWidth={2.2} />
+        <Icon className="size-3.5 text-primary" strokeWidth={2.2} />
         {text}
-        {required && <span className="text-clay">*</span>}
+        {required && <span className="text-error">*</span>}
       </label>
       {!required && (
-        <span className="rounded-full border border-ink/10 bg-paper px-2 py-0.5 text-[9.5px] font-medium uppercase tracking-wider text-bark/60">
+        <span className="rounded-full border border-border bg-background px-2 py-0.5 text-[9.5px] font-medium uppercase tracking-wider text-muted">
           Không bắt buộc
         </span>
       )}
@@ -205,7 +205,7 @@ export default function FeedbackForm() {
                   cy="50"
                   r="46"
                   fill="none"
-                  stroke="#5f8f6b"
+                  stroke="#2e7d32"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   variants={{
@@ -219,7 +219,7 @@ export default function FeedbackForm() {
                 <motion.path
                   d="M32 51.5 44.5 63 69 38"
                   fill="none"
-                  stroke="#0d211a"
+                  stroke="#24332b"
                   strokeWidth="4.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -233,25 +233,25 @@ export default function FeedbackForm() {
                 />
               </motion.svg>
               <motion.div
-                className="absolute -inset-4 -z-10 rounded-full bg-leaf/10"
+                className="absolute -inset-4 -z-10 rounded-full bg-primary-soft"
                 initial={{ scale: 0.6, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
               />
             </div>
 
-            <h3 className="font-display text-3xl text-pine lg:text-4xl">
-              Góp ý đã được <em className="italic text-leaf">gieo đi</em>
+            <h3 className="text-3xl font-bold text-text lg:text-4xl">
+              Góp ý đã được <span className="text-primary">gieo đi</span>
             </h3>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-bark">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
               Cảm ơn bạn đã dành thời gian chia sẻ. Nội dung đã được chuyển
-              trực tiếp đến <strong>Quản lý Tuyển dụng</strong> và sẽ được xem
+              trực tiếp đến <strong className="text-text">Quản lý Tuyển dụng</strong> và sẽ được xem
               xét, phản hồi sớm nhất trong vòng 48 giờ làm việc.
             </p>
 
             <button
               onClick={reset}
-              className="group mt-9 inline-flex items-center gap-2.5 rounded-full border border-pine/20 bg-paper px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-pine transition-all duration-300 hover:border-pine hover:bg-pine hover:text-cream"
+              className="group mt-9 inline-flex items-center gap-2.5 rounded-full border border-border bg-background px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-text transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white"
             >
               Gửi thêm ý kiến khác
               <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -266,12 +266,14 @@ export default function FeedbackForm() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -14 }}
             transition={{ duration: 0.4 }}
-            className="space-y-8"
+            className="space-y-6"
           >
             {/* name + phone */}
-            <div className="grid gap-8 sm:grid-cols-2">
-              <div className="field-line border-b border-ink/15">
-                <Label htmlFor="fullName" icon={User} text="Họ và tên" />
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="input-box">
+                <div className="px-4 pt-3">
+                  <Label htmlFor="fullName" icon={User} text="Họ và tên" />
+                </div>
                 <input
                   id="fullName"
                   type="text"
@@ -285,8 +287,10 @@ export default function FeedbackForm() {
                   maxLength={120}
                 />
               </div>
-              <div className="field-line border-b border-ink/15">
-                <Label htmlFor="phone" icon={Phone} text="Số điện thoại" />
+              <div className="input-box">
+                <div className="px-4 pt-3">
+                  <Label htmlFor="phone" icon={Phone} text="Số điện thoại" />
+                </div>
                 <input
                   id="phone"
                   type="tel"
@@ -305,23 +309,25 @@ export default function FeedbackForm() {
 
             {/* department */}
             <div className="relative" ref={deptRef}>
-              <Label htmlFor="department" icon={Building2} text="Bộ phận" />
-              <button
-                id="department"
-                type="button"
-                onClick={() => setDeptOpen((v) => !v)}
-                aria-expanded={deptOpen}
-                className={`field-line flex w-full items-center justify-between border-b border-ink/15 py-3 text-left text-[15px] ${
-                  department ? "text-ink" : "text-bark/40"
-                }`}
-              >
-                <span>{department || "Chọn bộ phận đang công tác"}</span>
-                <ChevronDown
-                  className={`size-4 text-bark/60 transition-transform duration-300 ${
-                    deptOpen ? "rotate-180" : ""
+              <div className="input-box px-4 py-3">
+                <Label htmlFor="department" icon={Building2} text="Bộ phận" />
+                <button
+                  id="department"
+                  type="button"
+                  onClick={() => setDeptOpen((v) => !v)}
+                  aria-expanded={deptOpen}
+                  className={`flex w-full items-center justify-between text-left text-[15px] ${
+                    department ? "text-text" : "text-muted/50"
                   }`}
-                />
-              </button>
+                >
+                  <span>{department || "Chọn bộ phận đang công tác"}</span>
+                  <ChevronDown
+                    className={`size-4 text-muted transition-transform duration-300 ${
+                      deptOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </div>
               <AnimatePresence>
                 {deptOpen && (
                   <motion.ul
@@ -329,7 +335,7 @@ export default function FeedbackForm() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -6, scale: 0.99 }}
                     transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute left-0 right-0 top-full z-30 mt-2 max-h-72 overflow-auto rounded-2xl border border-ink/10 bg-paper p-1.5 shadow-[0_24px_60px_-20px_rgba(13,33,26,0.35)]"
+                    className="absolute left-0 right-0 top-full z-30 mt-2 max-h-72 overflow-auto rounded-[var(--radius-input)] border border-border bg-card p-1.5 shadow-[var(--shadow-soft)]"
                   >
                     {DEPARTMENTS.map((d) => (
                       <li key={d}>
@@ -339,15 +345,15 @@ export default function FeedbackForm() {
                             setDepartment(d);
                             setDeptOpen(false);
                           }}
-                          className={`flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-left text-[13.5px] transition-colors ${
+                          className={`flex w-full items-center justify-between rounded-lg px-4 py-2.5 text-left text-[13.5px] transition-colors ${
                             department === d
-                              ? "bg-pine text-cream"
-                              : "text-ink hover:bg-sand/70"
+                              ? "bg-primary text-white"
+                              : "text-text hover:bg-background"
                           }`}
                         >
                           {d}
                           {department === d && (
-                            <Check className="size-4 text-sage" />
+                            <Check className="size-4 text-white" />
                           )}
                         </button>
                       </li>
@@ -358,7 +364,7 @@ export default function FeedbackForm() {
             </div>
 
             {/* content */}
-            <div className="field-line border-b border-ink/15">
+            <div className="input-box px-4 pt-3">
               <Label
                 htmlFor="content"
                 icon={MessageSquareText}
@@ -371,14 +377,14 @@ export default function FeedbackForm() {
                 placeholder="Chia sẻ về môi trường làm việc, quy trình, điều kiện lao động hoặc bất kỳ điều gì bạn đang quan tâm…"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                className={`${inputCls} resize-none leading-relaxed`}
+                className={`${inputCls} resize-none px-0 leading-relaxed`}
                 maxLength={CONTENT_MAX + 100}
               />
-              <div className="flex items-center justify-between pb-1 pt-1 text-[10.5px] text-bark/50">
+              <div className="flex items-center justify-between pb-3 pt-1 text-[10.5px] text-muted">
                 <span>Tối thiểu {CONTENT_MIN} ký tự</span>
                 <span
                   className={
-                    content.length > CONTENT_MAX ? "font-semibold text-clay" : ""
+                    content.length > CONTENT_MAX ? "font-semibold text-error" : ""
                   }
                 >
                   {content.length}/{CONTENT_MAX}
@@ -401,7 +407,7 @@ export default function FeedbackForm() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex items-center gap-4 rounded-2xl border border-ink/10 bg-paper p-3"
+                  className="flex items-center gap-4 rounded-[var(--radius-input)] border border-border bg-background p-3"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -410,10 +416,10 @@ export default function FeedbackForm() {
                     className="size-16 rounded-xl object-cover"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-[13px] font-medium text-ink">
+                    <p className="truncate text-[13px] font-medium text-text">
                       {file?.name}
                     </p>
-                    <p className="text-[11px] text-bark/60">
+                    <p className="text-[11px] text-muted">
                       {file ? (file.size / 1024 / 1024).toFixed(2) : ""} MB ·
                       sẵn sàng gửi kèm
                     </p>
@@ -422,7 +428,7 @@ export default function FeedbackForm() {
                     type="button"
                     onClick={() => pickFile(null)}
                     aria-label="Xóa ảnh"
-                    className="grid size-9 shrink-0 place-items-center rounded-full border border-ink/10 text-bark transition-all hover:border-clay/40 hover:bg-clay/10 hover:text-clay"
+                    className="grid size-9 shrink-0 place-items-center rounded-full border border-border text-muted transition-all hover:border-error/40 hover:bg-error-soft hover:text-error"
                   >
                     <X className="size-4" />
                   </button>
@@ -437,22 +443,22 @@ export default function FeedbackForm() {
                   }}
                   onDragLeave={() => setDragging(false)}
                   onDrop={onDrop}
-                  className={`group flex w-full flex-col items-center gap-2.5 rounded-2xl border border-dashed px-6 py-7 text-center transition-all duration-300 ${
+                  className={`group flex w-full flex-col items-center gap-2.5 rounded-[var(--radius-input)] border border-dashed px-6 py-7 text-center transition-all duration-300 ${
                     dragging
-                      ? "border-leaf bg-leaf/10"
-                      : "border-ink/20 bg-paper/60 hover:border-leaf/60 hover:bg-leaf/5"
+                      ? "border-primary bg-primary-soft"
+                      : "border-border bg-background hover:border-primary/50 hover:bg-primary-soft/60"
                   }`}
                 >
-                  <span className="grid size-11 place-items-center rounded-full bg-pine/[0.06] text-leaf transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110">
+                  <span className="grid size-11 place-items-center rounded-full bg-primary-soft text-primary transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110">
                     <ImagePlus className="size-5" />
                   </span>
-                  <span className="text-[13px] font-medium text-ink">
+                  <span className="text-[13px] font-medium text-text">
                     Kéo thả ảnh vào đây hoặc{" "}
-                    <span className="underline decoration-leaf decoration-2 underline-offset-4">
+                    <span className="underline decoration-primary decoration-2 underline-offset-4">
                       chọn từ thiết bị
                     </span>
                   </span>
-                  <span className="text-[10.5px] uppercase tracking-wider text-bark/50">
+                  <span className="text-[10.5px] uppercase tracking-wider text-muted">
                     JPG · PNG · WEBP · GIF — tối đa 8MB
                   </span>
                 </button>
@@ -468,7 +474,7 @@ export default function FeedbackForm() {
                   exit={{ opacity: 0, height: 0, marginTop: -16 }}
                   className="overflow-hidden"
                 >
-                  <div className="flex items-start gap-3 rounded-2xl border border-clay/25 bg-clay/[0.07] px-4.5 py-3.5 text-[13px] leading-relaxed text-clay">
+                  <div className="flex items-start gap-3 rounded-[var(--radius-input)] border border-error/25 bg-error-soft px-4.5 py-3.5 text-[13px] leading-relaxed text-error">
                     <CircleAlert className="mt-0.5 size-4 shrink-0" />
                     {error}
                   </div>
@@ -482,9 +488,9 @@ export default function FeedbackForm() {
                 type="submit"
                 disabled={status === "submitting"}
                 whileTap={{ scale: 0.985 }}
-                className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-pine px-8 py-4.5 text-[13px] font-semibold uppercase tracking-[0.2em] text-cream transition-shadow duration-300 hover:shadow-[0_20px_50px_-16px_rgba(13,33,26,0.6)] disabled:cursor-wait disabled:opacity-90"
+                className="group relative flex h-[52px] w-full items-center justify-center gap-3 overflow-hidden rounded-[14px] bg-primary text-[13px] font-semibold uppercase tracking-[0.2em] text-white transition-shadow duration-300 hover:bg-primary-hover hover:shadow-[0_16px_40px_-16px_rgba(46,125,50,0.55)] disabled:cursor-wait disabled:opacity-90"
               >
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-leaf/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
                 {status === "submitting" ? (
                   <>
                     <LoaderCircle className="size-4.5 animate-spin" />
@@ -492,13 +498,13 @@ export default function FeedbackForm() {
                   </>
                 ) : (
                   <>
-                    <Flower2 className="size-4.5 text-sage transition-transform duration-500 group-hover:rotate-45" />
+                    <Flower2 className="size-4.5 transition-transform duration-500 group-hover:rotate-45" />
                     Gửi ý kiến của tôi
                     <Send className="size-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
                   </>
                 )}
               </motion.button>
-              <p className="mt-4 text-center text-[11px] leading-relaxed text-bark/60">
+              <p className="mt-4 text-center text-[11px] leading-relaxed text-muted">
                 Thông tin được mã hóa & chuyển trực tiếp đến Quản lý Tuyển
                 dụng. Bạn có thể để trống họ tên để góp ý ẩn danh.
               </p>
