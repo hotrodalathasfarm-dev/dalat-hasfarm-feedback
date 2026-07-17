@@ -11,10 +11,7 @@ export default function Header() {
           height={48}
           className="h-11 w-auto"
         />
-        <span className="leading-none">
-          <span className="block text-[16px] font-semibold tracking-tight text-text">
-            Dalat Hasfarm
-          </span>
+        <span className="leading-none">          
           <span className="mt-1 block text-[9px] font-semibold uppercase tracking-[0.28em] text-muted">
             Phòng Nhân sự
           </span>
