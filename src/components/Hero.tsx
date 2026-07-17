@@ -249,8 +249,8 @@ export default function Hero() {
             <div className="mt-5 flex flex-wrap gap-2">
               {[
                 { icon: ShieldCheck, text: "Bảo mật tuyệt đối" },
-                { icon: Clock4, text: "Phản hồi trong 48h" },
-                { icon: Mailbox, text: "Gửi thẳng đến quản lý" },
+                { icon: Clock4, text: "Ghi nhận kịp thời" },
+                { icon: Mailbox, text: "Gửi thẳng đến PNS" },
               ].map((c) => (
                 <span
                   key={c.text}
