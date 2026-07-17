@@ -24,43 +24,6 @@ const rise = {
   }),
 };
 
-function CircleBadge() {
-  return (
-    <div className="relative grid size-28 place-items-center lg:size-32">
-      <svg
-        viewBox="0 0 100 100"
-        className="absolute inset-0 animate-spin-slow text-primary/35"
-      >
-        <defs>
-          <path
-            id="badge-circle"
-            d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
-          />
-        </defs>
-        <text
-          fontSize="7.5"
-          letterSpacing="2.2"
-          fill="currentColor"
-          style={{ textTransform: "uppercase", fontWeight: 600 }}
-        >
-          <textPath href="#badge-circle">
-            Lắng nghe · Thấu hiểu · Đồng hành · Cải thiện ·
-          </textPath>
-        </text>
-      </svg>
-      <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-xl ring-2 ring-primary/15">
-        <Image
-          src="/Logo-Dalat-Hasfarm.png"
-          alt="Dalat Hasfarm"
-          width={170}
-          height={44}
-          className="h-12 w-auto"
-        />
-      </span>
-    </div>
-  );
-}
-
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -214,15 +177,7 @@ export default function Hero() {
                 </p>
               </div>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.85, duration: 0.7, ease: EASE }}
-              className="absolute left-[500px] top-[214px] hidden xl:block"
-            >
-              <CircleBadge />
-            </motion.div>
+            
           </div>
 
           <TrustSection />
