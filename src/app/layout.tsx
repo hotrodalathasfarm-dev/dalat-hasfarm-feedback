@@ -1,20 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Playfair_Display, Be_Vietnam_Pro } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const inter = Inter({
   subsets: ["latin", "vietnamese"],
-  variable: "--font-playfair",
+  variable: "--font-inter",
   display: "swap",
-  style: ["normal", "italic"],
-});
-
-const beVietnam = Be_Vietnam_Pro({
-  subsets: ["latin", "vietnamese"],
-  variable: "--font-be-vietnam",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -25,15 +18,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d211a",
+  themeColor: "#f7f9f7",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="vi" className={`${playfair.variable} ${beVietnam.variable}`}>
-      <body className="font-sans bg-pine text-ink antialiased grain">
+    <html lang="vi" className={inter.variable}>
+      <body className="font-sans bg-background text-text antialiased">
         {children}
       </body>
     </html>
