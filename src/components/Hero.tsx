@@ -5,13 +5,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Flower2, ShieldCheck, Clock4, Mailbox, Leaf } from "lucide-react";
 import FeedbackForm from "@/components/feedback-form";
 import TrustSection from "@/components/TrustSection";
+import Image from "next/image";
 
-const IMG_MAIN =
-  "https://images.pexels.com/photos/15236792/pexels-photo-15236792.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=900";
-const IMG_SECOND =
-  "https://images.pexels.com/photos/25566637/pexels-photo-25566637.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=520&w=420";
-const IMG_WIDE =
-  "https://images.pexels.com/photos/11690877/pexels-photo-11690877.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=520&w=1400";
+const IMG_MAIN = "/hero/greenhouse.jpg";
+
+const IMG_SECOND = "/hero/employee.jpg";
+
+const IMG_WIDE = "/hero/banner.jpg";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -34,12 +34,12 @@ function CircleBadge() {
         <defs>
           <path
             id="badge-circle"
-            d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+            d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
           />
         </defs>
         <text
-          fontSize="8.2"
-          letterSpacing="2.6"
+          fontSize="7.5"
+          letterSpacing="2.2"
           fill="currentColor"
           style={{ textTransform: "uppercase", fontWeight: 600 }}
         >
@@ -48,8 +48,14 @@ function CircleBadge() {
           </textPath>
         </text>
       </svg>
-      <span className="grid size-12 place-items-center rounded-full bg-primary-soft text-primary ring-1 ring-primary/25">
-        <Flower2 className="size-5" />
+      <span className="grid size-16 place-items-center rounded-full bg-white shadow-lg ring-2 ring-primary/15">
+        <Image
+          src="/Logo-Dalat-Hasfarm.png"
+          alt="Dalat Hasfarm"
+          width={54}
+          height={54}
+          className="h-12 w-auto"
+        />
       </span>
     </div>
   );
@@ -204,7 +210,7 @@ export default function Hero() {
                   loading="lazy"
                 />
                 <p className="px-1 pb-1 pt-2.5 text-center text-[12.5px] italic text-muted">
-                  “Nơi làm việc đẹp bắt đầu từ tiếng nói”
+                  “Mỗi góp ý đều góp phần xây dựng môi trường làm việc tích cực hơn.”
                 </p>
               </div>
             </motion.div>
