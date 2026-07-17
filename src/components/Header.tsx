@@ -7,8 +7,8 @@ export default function Header() {
         <Image
           src="/Logo-Dalat-Hasfarm.png"
           alt="Dalat Hasfarm"
-          width={180}
-          height={48}
+          width={360}
+          height={96}
           className="h-11 w-auto"
         />
         <span className="leading-none">          
