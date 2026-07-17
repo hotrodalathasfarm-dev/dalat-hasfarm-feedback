@@ -1,44 +1,28 @@
-import { Flower2, ShieldCheck, PhoneCall } from "lucide-react";
-
-function Marquee() {
-  const words = ["Lắng nghe", "Thấu hiểu", "Hành động", "Bảo mật", "Tôn trọng"];
-  return (
-    <div className="relative overflow-hidden border-y border-border bg-card py-2.5">
-      <div className="flex w-max animate-marquee items-center gap-8 whitespace-nowrap">
-        {[0, 1].map((half) => (
-          <div key={half} className="flex items-center gap-8" aria-hidden={half === 1}>
-            {Array.from({ length: 2 }).flatMap((_, r) =>
-              words.map((w) => (
-                <span
-                  key={`${half}-${r}-${w}`}
-                  className="flex items-center gap-8 text-[10.5px] font-medium uppercase tracking-[0.24em] text-muted"
-                >
-                  {w}
-                  <Flower2 className="size-3 text-primary/40" />
-                </span>
-              )),
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+import Image from "next/image";
+import { ShieldCheck, PhoneCall } from "lucide-react";
 
 export default function Footer() {
   return (
     <>
-      <Marquee />
+      <div className="border-y border-border bg-card/60">
+        <div className="mx-auto max-w-[1500px] px-5 py-4 text-center sm:px-8 lg:px-12">
+          <p className="text-sm font-medium text-muted">
+            Mỗi góp ý của bạn đều góp phần tạo nên một Dalat Hasfarm tốt đẹp hơn.
+          </p>
+        </div>
+      </div>
+    
       <footer className="relative bg-background">
         <div className="mx-auto grid max-w-[1500px] gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-12">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="grid size-9 place-items-center rounded-full bg-primary-soft text-primary">
-                <Flower2 className="size-4.5" />
-              </span>
-              <span className="text-lg font-semibold text-text">
-                Dalat Hasfarm
-              </span>
+            <div className="flex items-center">
+              <Image
+                src="/Logo-Dalat-Hasfarm.png"
+                alt="Dalat Hasfarm"
+                width={780}
+                height={184}
+                className="h-11 w-auto"
+              />
             </div>
             <p className="mt-4 max-w-sm text-[12.5px] leading-relaxed text-muted">
               Kênh góp ý – phản hồi nội bộ. Mọi thông tin được bảo mật tuyệt
